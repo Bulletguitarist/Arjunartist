@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commissions — T Arjun Abhinav</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{--bg:#f9f7f4;--bg2:#f2ede6;--text:#1c1814;--soft:#6b6057;--muted:#a89f95;--accent:#8b6f47;--accent-l:#c4a882;--accent-p:#f0e6d8;--white:#fff;--border:rgba(26,24,20,0.08);}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;font-weight:300;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.5rem 4rem;background:rgba(249,247,244,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:300;color:var(--text);text-decoration:none;}
+.nav-logo span{font-style:italic;color:var(--accent);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);text-decoration:none;transition:color .2s;position:relative;padding-bottom:3px;}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--accent);transition:width .35s;}
+.nav-links a:hover,.nav-links a.active{color:var(--accent);}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-right{display:flex;align-items:center;gap:2rem;}
+.nav-socials{display:flex;gap:.5rem;}
+.soc{width:30px;height:30px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);color:var(--soft);text-decoration:none;transition:all .2s;}
+.soc svg{width:14px;height:14px;fill:currentColor;}
+.soc:hover{transform:scale(1.1);}
+.soc.wa:hover{border-color:#25d366;color:#25d366;background:#f0fff4;}
+.soc.ig:hover{border-color:#e1306c;color:#e1306c;background:#fff0f5;}
+.soc.em:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-p);}
+footer{background:var(--text);padding:3rem 4rem;display:flex;justify-content:space-between;align-items:center;}
+.f-logo{font-family:"Cormorant Garamond",serif;font-size:1.2rem;color:rgba(249,247,244,.4);}
+.f-logo span{font-style:italic;color:var(--accent-l);}
+.f-social{display:flex;gap:.6rem;}
+.f-social .soc{border-color:rgba(249,247,244,.12);color:rgba(249,247,244,.35);}
+.f-copy{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(249,247,244,.2);}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal.vis{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+@media(max-width:768px){nav{padding:1.2rem 1.5rem;}footer{padding:2rem 1.5rem;flex-direction:column;gap:1rem;text-align:center;}}
+
+@keyframes slideUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+.page-banner{
+  background:var(--text);
+  padding:10rem 5rem 5rem;
+  position:relative;overflow:hidden;
+}
+.banner-bg-text{
+  position:absolute;
+  font-family:"Cormorant Garamond",serif;
+  font-size:20vw;font-weight:200;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,.04);
+  right:-2rem;top:50%;transform:translateY(-50%);
+  pointer-events:none;white-space:nowrap;
+}
+.banner-eyebrow{
+  font-family:"Space Mono",monospace;
+  font-size:.58rem;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--accent-l);
+  margin-bottom:1rem;
+  opacity:0;animation:slideUp .8s ease .2s forwards;
+}
+.banner-title{
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(3rem,6vw,5rem);
+  font-weight:200;line-height:1.05;color:var(--white);
+  opacity:0;animation:slideUp .8s ease .4s forwards;
+}
+.banner-title em{font-style:italic;color:var(--accent-l);}
+.banner-desc{
+  max-width:500px;font-size:1rem;line-height:1.8;
+  color:rgba(249,247,244,.5);margin-top:1.5rem;
+  opacity:0;animation:slideUp .8s ease .6s forwards;
+}
+
+/* PRICING SECTION */
+.pricing-section{padding:5rem;background:var(--white);}
+.pricing-header{margin-bottom:3rem;}
+.section-eyebrow{
+  font-family:"Space Mono",monospace;
+  font-size:.55rem;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:.8rem;
+  display:flex;align-items:center;gap:.8rem;
+}
+.section-eyebrow::before{content:'';width:20px;height:1px;background:var(--accent-l);}
+.section-title{
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(2rem,3.5vw,3rem);
+  font-weight:200;color:var(--text);
+}
+.section-title em{font-style:italic;color:var(--accent);}
+
+.pricing-table{width:100%;border-collapse:collapse;}
+.pricing-table thead tr{background:var(--text);}
+.pricing-table thead th{
+  padding:1rem 1.5rem;text-align:left;
+  font-size:.6rem;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(249,247,244,.5);
+  font-weight:300;
+}
+.pricing-table tbody tr{
+  border-bottom:1px solid var(--border);
+  transition:background .2s;
+}
+.pricing-table tbody tr:hover{background:var(--accent-p);}
+.pricing-table tbody td{padding:1.5rem;vertical-align:middle;}
+.td-medium{
+  font-family:"Cormorant Garamond",serif;
+  font-size:1.3rem;font-weight:300;color:var(--text);
+}
+.td-desc{font-size:.82rem;color:var(--soft);line-height:1.5;}
+.td-price{
+  font-family:"Cormorant Garamond",serif;
+  font-size:1.5rem;font-weight:300;color:var(--accent);
+  white-space:nowrap;
+}
+.td-tag{
+  display:inline-block;
+  font-size:.55rem;letter-spacing:.12em;
+  text-transform:uppercase;
+  padding:.25rem .7rem;
+  border:1px solid var(--accent-l);color:var(--accent);
+}
+.td-action a{
+  font-size:.62rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--accent);
+  text-decoration:none;border-bottom:1px solid var(--accent-l);
+  padding-bottom:1px;transition:all .2s;white-space:nowrap;
+}
+.td-action a:hover{color:var(--text);border-color:var(--text);}
+
+/* PROCESS */
+.process-section{
+  padding:5rem;
+  background:var(--bg);
+  border-top:1px solid var(--border);
+}
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--border);
+  margin-top:3rem;
+}
+.process-step{
+  background:var(--bg);
+  padding:2.5rem 2rem;
+  transition:background .25s;
+  position:relative;
+}
+.process-step:hover{background:var(--white);}
+.step-num{
+  font-family:"Cormorant Garamond",serif;
+  font-size:3.5rem;font-weight:200;
+  color:var(--accent-l);line-height:1;
+  margin-bottom:1.2rem;
+}
+.step-title{
+  font-size:.8rem;font-weight:500;
+  color:var(--text);margin-bottom:.5rem;
+  letter-spacing:.05em;
+}
+.step-desc{font-size:.82rem;color:var(--soft);line-height:1.6;}
+
+/* FAQ */
+.faq-section{padding:5rem;background:var(--white);border-top:1px solid var(--border);}
+.faq-item{
+  border-bottom:1px solid var(--border);
+  padding:1.5rem 0;cursor:pointer;
+}
+.faq-q{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:1rem;color:var(--text);
+  font-family:"Cormorant Garamond",serif;font-weight:300;
+}
+.faq-icon{
+  font-size:1.2rem;color:var(--accent);
+  transition:transform .3s;flex-shrink:0;
+}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-a{
+  font-size:.88rem;line-height:1.8;color:var(--soft);
+  max-height:0;overflow:hidden;
+  transition:max-height .4s ease,padding .3s;
+}
+.faq-item.open .faq-a{max-height:200px;padding-top:.8rem;}
+
+/* CTA */
+.comm-cta{
+  background:var(--text);
+  padding:5rem;
+  display:grid;grid-template-columns:1fr auto;
+  align-items:center;gap:3rem;
+}
+.comm-cta-text h2{
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(2rem,3.5vw,2.8rem);
+  font-weight:200;color:var(--white);line-height:1.2;
+  margin-bottom:.8rem;
+}
+.comm-cta-text h2 em{font-style:italic;color:var(--accent-l);}
+.comm-cta-text p{font-size:.9rem;color:rgba(249,247,244,.5);}
+.btn-cta{
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--text);background:var(--white);
+  padding:1.1rem 2.5rem;text-decoration:none;
+  transition:background .25s;white-space:nowrap;display:inline-block;
+}
+.btn-cta:hover{background:var(--accent-l);}
+
+@media(max-width:768px){
+  .page-banner{padding:7rem 1.5rem 3rem;}
+  .pricing-section,.process-section,.faq-section{padding:3rem 1.5rem;}
+  .process-grid{grid-template-columns:1fr 1fr;}
+  .comm-cta{padding:3rem 1.5rem;grid-template-columns:1fr;}
+  .pricing-table thead{display:none;}
+  .pricing-table tbody td{display:block;padding:.5rem 1rem;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">T Arjun <span>Abhinav</span></a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="commissions.html" class="active">Commissions</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-socials">
+      <a href="https://wa.me/918696083673" target="_blank" class="soc wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+      <a href="https://instagram.com/sketch365_0" target="_blank" class="soc ig"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+      <a href="mailto:arjunjji2020@gmail.com" class="soc em"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-banner">
+  <div class="banner-bg-text">Commission</div>
+  <div style="position:relative;z-index:1;">
+    <div class="banner-eyebrow">Work Together</div>
+    <h1 class="banner-title">Commission a<br><em>Original Piece</em></h1>
+    <p class="banner-desc">Each commission is unique, signed, and crafted with full attention. Let's create something meaningful together.</p>
+  </div>
+</div>
+
+<section class="pricing-section">
+  <div class="pricing-header reveal">
+    <div class="section-eyebrow">Pricing</div>
+    <h2 class="section-title">What it <em>costs</em></h2>
+  </div>
+  <table class="pricing-table reveal d1">
+    <thead>
+      <tr>
+        <th>Medium</th>
+        <th>Description</th>
+        <th>Starting Price</th>
+        <th>Tag</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="td-medium">Portrait</div></td>
+        <td><div class="td-desc">Custom portraits in any medium — capturing not just likeness, but soul. Charcoal, graphite, oil or watercolour.</div></td>
+        <td><div class="td-price">On Request</div></td>
+        <td><div class="td-tag">Custom</div></td>
+        <td class="td-action"><a href="contact.html">Enquire →</a></td>
+      </tr>
+      <tr>
+        <td><div class="td-medium">Oil</div></td>
+        <td><div class="td-desc">Rich, layered paintings with depth and warmth. Long-lasting, gallery quality.</div></td>
+        <td><div class="td-price">₹5,000</div></td>
+        <td><div class="td-tag">Starting Price</div></td>
+        <td class="td-action"><a href="contact.html">Enquire →</a></td>
+      </tr>
+      <tr>
+        <td><div class="td-medium">Acrylic</div></td>
+        <td><div class="td-desc">Vibrant and versatile. Price varies depending on size and complexity.</div></td>
+        <td><div class="td-price">₹3,500+</div></td>
+        <td><div class="td-tag">Size Dependent</div></td>
+        <td class="td-action"><a href="contact.html">Enquire →</a></td>
+      </tr>
+      <tr>
+        <td><div class="td-medium">Watercolour</div></td>
+        <td><div class="td-desc">Delicate, luminous pieces. Soft and expressive with beautiful transparency.</div></td>
+        <td><div class="td-price">₹1,500</div></td>
+        <td><div class="td-tag">Starting Price</div></td>
+        <td class="td-action"><a href="contact.html">Enquire →</a></td>
+      </tr>
+      <tr>
+        <td><div class="td-medium">Graphite</div></td>
+        <td><div class="td-desc">Precise, detailed drawings. Clean, minimal, and timeless in their simplicity.</div></td>
+        <td><div class="td-price">₹1,500</div></td>
+        <td><div class="td-tag">Starting Price</div></td>
+        <td class="td-action"><a href="contact.html">Enquire →</a></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="process-section">
+  <div class="section-eyebrow reveal">The Process</div>
+  <h2 class="section-title reveal d1">How it <em>works</em></h2>
+  <div class="process-grid">
+    <div class="process-step reveal"><div class="step-num">01</div><div class="step-title">Reach Out</div><div class="step-desc">WhatsApp or email with your idea, reference images, and size requirements.</div></div>
+    <div class="process-step reveal d1"><div class="step-num">02</div><div class="step-title">Discuss</div><div class="step-desc">We finalize the medium, dimensions, timeline, and confirm the price.</div></div>
+    <div class="process-step reveal d2"><div class="step-num">03</div><div class="step-title">Create</div><div class="step-desc">I craft your piece with full attention. Progress updates shared along the way.</div></div>
+    <div class="process-step reveal d3"><div class="step-num">04</div><div class="step-title">Deliver</div><div class="step-desc">Your artwork — signed, packed carefully, and delivered to you.</div></div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="section-eyebrow reveal">FAQ</div>
+  <h2 class="section-title reveal d1" style="margin-bottom:2rem;">Common <em>questions</em></h2>
+  <div class="faq-item reveal" onclick="this.classList.toggle('open')">
+    <div class="faq-q"><span>How long does a commission take?</span><span class="faq-icon">+</span></div>
+    <div class="faq-a">Typically 2–6 weeks depending on the medium and complexity. Oil takes longer due to drying time. Watercolour and graphite are faster.</div>
+  </div>
+  <div class="faq-item reveal" onclick="this.classList.toggle('open')">
+    <div class="faq-q"><span>Do you ship outside India?</span><span class="faq-icon">+</span></div>
+    <div class="faq-a">Currently commissions are for India only. Get in touch to discuss options for international delivery.</div>
+  </div>
+  <div class="faq-item reveal" onclick="this.classList.toggle('open')">
+    <div class="faq-q"><span>Can I request a specific size?</span><span class="faq-icon">+</span></div>
+    <div class="faq-a">Yes! Size is discussed during the enquiry process. Larger sizes may affect the price — especially for oil and acrylic.</div>
+  </div>
+  <div class="faq-item reveal" onclick="this.classList.toggle('open')">
+    <div class="faq-q"><span>What information do I need to provide?</span><span class="faq-icon">+</span></div>
+    <div class="faq-a">Share your idea, reference images if any, preferred medium, size, and timeline. The more detail the better!</div>
+  </div>
+</section>
+
+<div class="comm-cta reveal">
+  <div class="comm-cta-text">
+    <h2>Ready to commission<br>something <em>special?</em></h2>
+    <p>Get in touch — I'd love to hear about your idea.</p>
+  </div>
+  <a href="contact.html" class="btn-cta">Get In Touch</a>
+</div>
+
+<footer>
+  <div class="f-logo">T Arjun <span>Abhinav</span></div>
+  <div class="f-social">
+    <a href="https://wa.me/918696083673" target="_blank" class="soc wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+    <a href="https://instagram.com/sketch365_0" target="_blank" class="soc ig"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+    <a href="mailto:arjunjji2020@gmail.com" class="soc em"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+  </div>
+  <div class="f-copy">© 2025 T Arjun Abhinav · All rights reserved</div>
+</footer>
+<script>
+const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>
